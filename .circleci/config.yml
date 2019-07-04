@@ -6,8 +6,7 @@ jobs:
     steps:
       - checkout
       - run:
-	  name: The Second Step
+          name: The Second Step
           command: |
-	    gradle test
+            gradle test
             
-       
