@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gildedrose.iml" filepath="$PROJECT_DIR$/.idea/modules/gildedrose.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gildedrose_main.iml" filepath="$PROJECT_DIR$/.idea/modules/gildedrose_main.iml" group="gildedrose" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/gildedrose_test.iml" filepath="$PROJECT_DIR$/.idea/modules/gildedrose_test.iml" group="gildedrose" />
+    </modules>
+  </component>
+</project>
