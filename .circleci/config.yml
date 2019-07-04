@@ -12,37 +12,9 @@ jobs:
 
      # deploy the image
      - run: docker push company/app:$CIRCLE_SHA1
-  test:
-  #  docker:
-   #   - image: circleci/openjdk:8-jdk
-    steps:
-      - checkout
-      - run:
-          name: The First Step
-          command: |
-            gradle test
-      - store_test_results:
-          path: build/test-results
-  package:
-  #  docker:
-  #    - image: circleci/openjdk:8-jdk
-    steps:
-      - checkout
-      - run:
-          name: The Second Step
-          command: |
-            gradle jar
-      - store_artifacts:
-          path: build/libs
-          destination: prefix
+
 workflows:
   version: 2
   docker_workflow:
     jobs:
-      - test
-      - package:
-          requires:
-            - test
-      - dockerize:
-          requires:
-            - package
+      - dockerize
