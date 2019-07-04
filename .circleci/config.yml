@@ -1,8 +1,20 @@
 version: 2.0
 jobs:
+ dockerize:
+   machine: true
+   steps:
+     - checkout
+     # Login to docker
+     - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASS
+
+     # build the application image
+     - run: docker build -t company/app:$CIRCLE_SHA1 .
+
+     # deploy the image
+     - run: docker push company/app:$CIRCLE_SHA1
   test:
-    docker:
-      - image: circleci/openjdk:8-jdk
+  #  docker:
+   #   - image: circleci/openjdk:8-jdk
     steps:
       - checkout
       - run:
@@ -12,8 +24,8 @@ jobs:
       - store_test_results:
           path: build/test-results
   package:
-    docker:
-      - image: circleci/openjdk:8-jdk
+  #  docker:
+  #    - image: circleci/openjdk:8-jdk
     steps:
       - checkout
       - run:
@@ -25,9 +37,12 @@ jobs:
           destination: prefix
 workflows:
   version: 2
-  testing_workflow:
+  docker_workflow:
     jobs:
       - test
       - package:
           requires:
             - test
+      - dockerize:
+          requires:
+            - package
