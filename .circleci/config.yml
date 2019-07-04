@@ -25,7 +25,7 @@ jobs:
           destination: prefix
 workflows:
   version: 2
-  feature_master:
+  test_workflow:
     jobs:
       - test:
           filters:
