@@ -25,14 +25,9 @@ jobs:
           destination: prefix
 workflows:
   version: 2
-  test_workflow:
+  testing_workflow:
     jobs:
-      - test:
-          filters:
-            branches:
-              only:
-                - feature/*
+      - test
       - package:
-          filters:
-            branches:
-              only: master
+          requires:
+            - test
